@@ -17,6 +17,7 @@ in
     ./extras/coding/mini-surround.nix
     ./extras/coding/yanky.nix
 
+    ./extras/editor/aerial.nix
     ./extras/editor/dial.nix
     ./extras/editor/inc-rename.nix
     ./extras/editor/mini-diff.nix
