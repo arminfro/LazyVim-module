@@ -43,6 +43,24 @@ in
 
   options.programs.lazyvim = {
     enable = mkEnableOption "lazyvim";
+    lazy-plugin-specs = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [
+        "plugins"
+      ];
+      description = ''
+        List of lua modules for lazy setup, default `[ "plugins" ]`:
+
+        require("lazy").setup({
+          spec = {
+            ...
+            { import = "plugins" },
+            ...
+          },
+          ...
+        })
+      '';
+    };
   };
 
   config = mkIf cfg.enable {
@@ -103,7 +121,7 @@ in
             )
           }
         		-- import/override with your plugins
-        		{ import = "plugins" },
+        		${lib.concatStringsSep "\n" (map (name: "{ import = \"${name}\" },") cfg.lazy-plugin-specs)}
         		{
         			"nvim-treesitter/nvim-treesitter",
         			opts = function(_, opts)

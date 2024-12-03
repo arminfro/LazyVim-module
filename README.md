@@ -129,6 +129,20 @@ return {
 }
 ```
 
+Use lua modules in `plugins` to support subfolders and finer file structure control
+
+```nix
+{ pkgs, ... }:
+{
+  programs.lazyvim = {
+    lazy-plugin-specs = [ "plugins.core" ]
+    plugins = [ pkgs.vimPlugins.undotree ];
+  };
+
+  xdg.configFile."nvim/lua/plugins/core/editor.lua".source = ./core/editor.lua;
+}
+```
+
 Enable optional programs
 
 ```nix
