@@ -8,6 +8,9 @@
 
     tailwindcss-colorizer-cmp-nvim.url = "github:roobert/tailwindcss-colorizer-cmp.nvim";
     tailwindcss-colorizer-cmp-nvim.flake = false;
+
+    blink-compat.url = "github:saghen/blink.compat";
+    blink-compat.flake = false;
   };
 
   outputs =

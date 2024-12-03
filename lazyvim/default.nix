@@ -14,6 +14,7 @@ let
 in
 {
   imports = map (module: import module self) [
+    ./extras/coding/luasnip.nix
     ./extras/coding/mini-surround.nix
     ./extras/coding/yanky.nix
 
@@ -102,8 +103,6 @@ in
         		-- add LazyVim and import its plugins
         		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
         		{ "nvim-telescope/telescope-fzf-native.nvim", enabled = true },
-        		{ "williamboman/mason-lspconfig.nvim", enabled = false },
-        		{ "williamboman/mason.nvim", enabled = false },
         		${
             builtins.concatStringsSep "\n\t\t" (
               map (extra: "{ import = \"lazyvim.plugins.${extra}\" },") (
@@ -128,7 +127,16 @@ in
             )
           }
         		-- import/override with your plugins
-        		${lib.concatStringsSep "\n" (map (name: "{ import = \"${name}\" },") cfg.lazy-plugin-specs)}
+        		${lib.concatStringsSep "\n\t\t" (map (name: "{ import = \"${name}\" },") cfg.lazy-plugin-specs)}
+            ${
+              if cfg.extras.coding.luasnip.enable then
+                "\n\t\t{ \"rafamadriz/friendly-snippets\", config = function() require(\"luasnip.loaders.from_vscode\").lazy_load({ paths = { \"${pkgs.vimPlugins.friendly-snippets}\" } }) end, },"
+                + "\n\t\t{ \"L3MON4D3/LuaSnip\", name = \"luasnip\" },"
+              else
+                ""
+            }
+        		{ "williamboman/mason-lspconfig.nvim", enabled = false },
+        		{ "williamboman/mason.nvim", enabled = false },
         		{
         			"nvim-treesitter/nvim-treesitter",
         			opts = function(_, opts)
