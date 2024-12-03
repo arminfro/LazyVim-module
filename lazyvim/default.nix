@@ -20,6 +20,7 @@ in
     ./extras/editor/dial.nix
     ./extras/editor/inc-rename.nix
     ./extras/editor/mini-diff.nix
+    ./extras/editor/telescope.nix
 
     ./extras/formatting/prettier.nix
 
