@@ -19,6 +19,7 @@ in
 
     ./extras/editor/dial.nix
     ./extras/editor/inc-rename.nix
+    ./extras/editor/mini-diff.nix
 
     ./extras/formatting/prettier.nix
 
