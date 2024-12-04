@@ -73,28 +73,53 @@ Enable extras
   programs.lazyvim = {
     extras = {
       coding = {
+        luasnip.enable = true;
         mini-surround.enable = true;
-
+        neogen.enable = true;
         yanky.enable = true;
       };
 
       editor = {
+        aerial.enable = true;
         dial.enable = true;
-
         inc-rename.enable = true;
+        mini-diff.enable = true;
+        mini-files.enable = true;
+        overseer.enable = true;
+        refactoring.enable = true;
+        telescope.enable = true;
+      };
+
+      formatting = {
+        prettier.enable = true;
       };
 
       lang = {
+        astro.enable = true;
+        git.enable = true;
+        json.enable = true;
+        markdown.enable = true;
         nix.enable = true;
+        prisma.enable = true;
+        svelte.enable = true;
+        tailwind.enable = true;
+        typescript.enable = true;
+      };
+
+      linting = {
+        eslint.enable = true;
       };
 
       test = {
         core.enable = true;
       };
 
+      ui = {
+        mini-animate.enable = true;
+      };
+
       util = {
         dot.enable = true;
-
         mini-hipatterns.enable = true;
       };
     };
