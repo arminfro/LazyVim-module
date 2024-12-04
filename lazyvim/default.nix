@@ -16,6 +16,7 @@ in
   imports = map (module: import module self) [
     ./extras/coding/luasnip.nix
     ./extras/coding/mini-surround.nix
+    ./extras/coding/neogen.nix
     ./extras/coding/yanky.nix
 
     ./extras/editor/aerial.nix
