@@ -121,8 +121,6 @@ Enable extras
       util = {
         dot.enable = true;
         mini-hipatterns.enable = true;
-        rest.enable = true;
-        startuptime.enable = true;
       };
     };
   };
