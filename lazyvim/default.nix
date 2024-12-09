@@ -53,6 +53,10 @@ in
 
   options.programs.lazyvim = {
     enable = mkEnableOption "lazyvim";
+    extraLuaConfig = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+    };
     lazy-plugin-specs = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [
@@ -198,6 +202,8 @@ in
         		},
         	},
         })
+
+        ${cfg.extraLuaConfig}
       '';
 
       extraPackages = builtins.attrValues { inherit (pkgs) lua-language-server shfmt stylua; };

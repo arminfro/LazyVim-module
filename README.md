@@ -162,6 +162,10 @@ Use lua modules in `plugins` to support subfolders and finer file structure cont
   programs.lazyvim = {
     lazy-plugin-specs = [ "plugins.core" ]
     plugins = [ pkgs.vimPlugins.undotree ];
+    extraLuaConfig =
+    # lua
+    ''
+    '';
   };
 
   xdg.configFile."nvim/lua/plugins/core/editor.lua".source = ./core/editor.lua;
